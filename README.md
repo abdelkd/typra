@@ -1,21 +1,15 @@
 # Stera
 
-a type-safe, express wrapper with validations inspired by TRPC.
+a type-safe express.js wrapper with validations. inspired by TRPC.
 
 # Why
 
-Express.js is great library, simple yet powerful it'd be perfect if it had type safety and validation by default. Well, no need anymore.
+Don't get me wrong, I love Express.js and it is a great library, it is simple yet powerful and it'd be perfect if it had type safety and validation by default. Well, no need anymore.
 
 # Installation
 
 ```shell
-npm i stera express
-```
-
-You'll also need zod for data validation
-
-```shell
-npm i zod
+npm i stera express zod
 ```
 
 # How to use
@@ -50,4 +44,4 @@ app.listen(3000, () => {
 });
 ```
 
-Note: if the field is supposed to be a number you have to always define the field as `z.coerce.number()`
+Note: if the field is supposed to be a number you have to always define the field as `z.coerce.number()`. Using `z.number()` will always make schema fail.
