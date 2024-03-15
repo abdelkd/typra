@@ -1,7 +1,7 @@
 {
-  "name": "stera-2",
+  "name": "stera",
   "version": "0.0.1",
-  "description": "",
+  "description": "An expressjs wrapper library with type safety and type validation using zod.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
