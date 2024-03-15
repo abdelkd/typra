@@ -1,4 +1,4 @@
-# Stera
+# typra
 
 a type-safe express.js wrapper with validations. inspired by TRPC.
 
@@ -9,7 +9,7 @@ Don't get me wrong, I love Express.js and it is a great library, it is simple ye
 # Installation
 
 ```shell
-npm i stera express zod
+npm i typra express zod
 ```
 
 # How to use
@@ -21,7 +21,7 @@ The application object that's returned by `init` exposes to functions, `input` a
 `get`, `post`, `put`, `patch`, `delete` functions are all exposed by `input`
 
 ```typescript
-import { init } from 'stera';
+import { init } from 'typra';
 import { z } from 'zod';
 
 const app = init();

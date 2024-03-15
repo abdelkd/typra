@@ -1,5 +1,5 @@
 {
-  "name": "stera",
+  "name": "typra",
   "version": "0.0.1",
   "description": "An expressjs wrapper library with type safety and type validation using zod.",
   "main": "./dist/index.js",
