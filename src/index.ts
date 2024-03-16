@@ -8,8 +8,10 @@ export const init = (generalOnError: (err: unknown) => void = () => {}) => {
   app.use(express.json());
 
   const input = <Params extends z.ZodRawShape, Body extends z.ZodRawShape>(
-    paramsSchema: z.ZodObject<Params> | z.ZodAny,
-    bodySchema: z.ZodObject<Body> | z.ZodAny,
+    // @ts-expect-error
+    paramsSchema?: z.ZodObject<Params> = z.object({}),
+    // @ts-expect-error
+    bodySchema?: z.ZodObject<Body> = z.object({}),
   ) => {
     const get: TypedRouteHandler<z.infer<typeof paramsSchema>, undefined> = (
       path,
