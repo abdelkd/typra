@@ -12,7 +12,7 @@ const bodySchema = z.object({
   name: z.string(),
 });
 
-app.input(paramsSchema, z.any()).get('/todo/:id', async (req, res) => {
+app.input(paramsSchema).get('/todo/:id', async (req, res) => {
   res.status(200).json({
     success: true,
     body: req.body,
