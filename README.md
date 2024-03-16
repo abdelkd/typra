@@ -9,14 +9,14 @@ Don't get me wrong, I love Express.js and it is a great library, it is simple ye
 # Installation
 
 ```shell
-npm i typra express zod
+npm i typra zod
 ```
 
 # How to use
 
 The library exposes `init` function that returns application object similar to calling `express()`. You can call it and start using it like you use express with only one difference.
 
-The application object that's returned by `init` exposes to functions, `input` and `listen` the latter is self explanatory. `input` takes to arguments which are zod schemas, params and body schemas. In the case of non existent data or to ignore validation (eg: body of a get request) you pass either `z.object({})` or `z.any()`
+The application object that's returned by `init` exposes to functions, `input` and `listen` the latter is self explanatory. `input` takes to arguments which are zod schemas, params and body schemas. In the case of non existent data or to ignore validation (eg: body of a get request) you can pass either `z.object({})` or emit it like in the example below.
 
 `get`, `post`, `put`, `patch`, `delete` functions are all exposed by `input`
 
@@ -31,7 +31,6 @@ app
     z.object({
       id: z.coerce.number(),
     }),
-    z.object({}),
   )
   .get('/user/:id', async (req, res) => {
     res.json({
