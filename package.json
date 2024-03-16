@@ -1,6 +1,6 @@
 {
   "name": "typra",
-  "version": "0.0.1",
+  "version": "0.0.11",
   "description": "An expressjs wrapper library with type safety and type validation using zod.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
