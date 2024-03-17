@@ -50,16 +50,16 @@ export const init = (generalOnError: (err: unknown) => void = () => {}) => {
       z.infer<typeof paramsSchema>,
       z.infer<typeof bodySchema>
     > = (path, handler, onError) => {
-      try {
-        app.post(
-          path,
-          async (
-            req: ExtendedRequest<
-              z.infer<typeof paramsSchema>,
-              z.infer<typeof bodySchema>
-            >,
-            res,
-          ) => {
+      app.post(
+        path,
+        async (
+          req: ExtendedRequest<
+            z.infer<typeof paramsSchema>,
+            z.infer<typeof bodySchema>
+          >,
+          res,
+        ) => {
+          try {
             const parsedParams = paramsSchema.safeParse(req.params);
             if (!parsedParams.success) {
               throw new z.ZodError(parsedParams.error.errors);
@@ -73,30 +73,30 @@ export const init = (generalOnError: (err: unknown) => void = () => {}) => {
             req.params = parsedParams.data;
             req.body = parsedBody.data;
             await handler(req, res);
-          },
-        );
-      } catch (error) {
-        generalOnError(error);
-        if (onError) {
-          onError(error);
-        }
-      }
+          } catch (error) {
+            generalOnError(error);
+            if (onError) {
+              onError(error);
+            }
+          }
+        },
+      );
     };
 
     const put: TypedRouteHandler<
       z.infer<typeof paramsSchema>,
       z.infer<typeof bodySchema>
     > = (path, handler, onError) => {
-      try {
-        app.put(
-          path,
-          async (
-            req: ExtendedRequest<
-              z.infer<typeof paramsSchema>,
-              z.infer<typeof bodySchema>
-            >,
-            res,
-          ) => {
+      app.put(
+        path,
+        async (
+          req: ExtendedRequest<
+            z.infer<typeof paramsSchema>,
+            z.infer<typeof bodySchema>
+          >,
+          res,
+        ) => {
+          try {
             const parsedParams = paramsSchema.safeParse(req.params);
             if (!parsedParams.success) {
               throw new z.ZodError(parsedParams.error.errors);
@@ -110,30 +110,30 @@ export const init = (generalOnError: (err: unknown) => void = () => {}) => {
             req.params = parsedParams.data;
             req.body = parsedBody.data;
             await handler(req, res);
-          },
-        );
-      } catch (error) {
-        generalOnError(error);
-        if (onError) {
-          onError(error);
-        }
-      }
+          } catch (error) {
+            generalOnError(error);
+            if (onError) {
+              onError(error);
+            }
+          }
+        },
+      );
     };
 
     const patch: TypedRouteHandler<
       z.infer<typeof paramsSchema>,
       z.infer<typeof bodySchema>
     > = (path, handler, onError) => {
-      try {
-        app.patch(
-          path,
-          async (
-            req: ExtendedRequest<
-              z.infer<typeof paramsSchema>,
-              z.infer<typeof bodySchema>
-            >,
-            res,
-          ) => {
+      app.patch(
+        path,
+        async (
+          req: ExtendedRequest<
+            z.infer<typeof paramsSchema>,
+            z.infer<typeof bodySchema>
+          >,
+          res,
+        ) => {
+          try {
             const parsedParams = paramsSchema.safeParse(req.params);
             if (!parsedParams.success) {
               throw new z.ZodError(parsedParams.error.errors);
@@ -147,14 +147,14 @@ export const init = (generalOnError: (err: unknown) => void = () => {}) => {
             req.params = parsedParams.data;
             req.body = parsedBody.data;
             await handler(req, res);
-          },
-        );
-      } catch (error) {
-        generalOnError(error);
-        if (onError) {
-          onError(error);
-        }
-      }
+          } catch (error) {
+            generalOnError(error);
+            if (onError) {
+              onError(error);
+            }
+          }
+        },
+      );
     };
 
     const deleteMethod: TypedRouteHandler<
@@ -177,7 +177,6 @@ export const init = (generalOnError: (err: unknown) => void = () => {}) => {
             }
 
             req.params = parsedParams.data;
-
             await handler(req, res);
           } catch (error) {
             generalOnError(error);
